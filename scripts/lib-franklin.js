@@ -593,6 +593,16 @@ export async function waitForLCP(lcpBlocks) {
 
   document.body.style.display = null;
   const lcpCandidate = document.querySelector('main img');
+
+  const preload = document.createElement('link');
+  preload.setAttribute('rel', 'preload');
+  preload.setAttribute('href', '/media_11e8614214479b3313a0d356fe9b5270c049f460c.jpeg?width=750&format=webply&optimize=medium');
+  preload.setAttribute('as', 'image');
+  preload.setAttribute('media', '(max-width: 600px)');
+  // preload.outerHTML = `<link rel="preload" href="/media_11e8614214479b3313a0d356fe9b5270c049f460c.jpeg?width=750&format=webply&optimize=medium" as="image" media="(max-width: 600px)">`;
+  document.head.append(preload);
+  alert(preload.outerHTML);
+  
   await new Promise((resolve) => {
     if (lcpCandidate && !lcpCandidate.complete) {
       lcpCandidate.setAttribute('loading', 'eager');
