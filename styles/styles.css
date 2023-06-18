@@ -15,6 +15,7 @@
   font-family: "center-bold-normal-400-fallback";
   size-adjust: 94.7%;
   src: local("Arial");
+  font-display: swap;
 }
 
 /* fallback font for Roboto (normal - 400) */
@@ -22,6 +23,7 @@
   font-family: "roboto-normal-400-fallback";
   size-adjust: 93.5%;
   src: local("Arial");
+  font-display: swap;
 }
 
  :root {
