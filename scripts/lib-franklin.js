@@ -603,7 +603,6 @@ function preloadLCPImage(lcpCandidate) {
   document.head.append(preload);
 }
 
-
 /**
  * Load LCP block and/or wait for LCP in default content.
  */
