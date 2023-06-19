@@ -584,6 +584,26 @@ export function decorateButtons(element) {
 }
 
 /**
+ * Preload LCP image
+ */
+function preloadLCPImage(lcpCandidate) {
+  const images = lcpCandidate.closest('picture').querySelectorAll('source');
+  [...images].forEach((image) => {
+    const preload = document.createElement('link');
+    preload.setAttribute('rel', 'preload');
+    preload.setAttribute('href', `${image.getAttribute('srcset')}`);
+    preload.setAttribute('as', 'image');
+    preload.setAttribute('media', `${image.getAttribute('media')}`);
+    document.head.append(preload);
+  });
+  const preload = document.createElement('link');
+  preload.setAttribute('rel', 'preload');
+  preload.setAttribute('href', `${lcpCandidate.getAttribute('srcset')}`);
+  preload.setAttribute('as', 'image');
+  document.head.append(preload);
+}
+
+/**
  * Load LCP block and/or wait for LCP in default content.
  */
 export async function waitForLCP(lcpBlocks) {
@@ -593,6 +613,7 @@ export async function waitForLCP(lcpBlocks) {
 
   document.body.style.display = null;
   const lcpCandidate = document.querySelector('main img');
+  if (lcpCandidate) preloadLCPImage(lcpCandidate);
   await new Promise((resolve) => {
     if (lcpCandidate && !lcpCandidate.complete) {
       lcpCandidate.setAttribute('loading', 'eager');
