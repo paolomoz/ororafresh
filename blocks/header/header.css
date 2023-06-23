@@ -1,19 +1,31 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
   width: 100%;
   z-index: 2;
-  position: fixed;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (min-width: 900px) {
+  header .nav-wrapper {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  header .nav-wrapper {
+    width: 1170px;
+  }
 }
 
 header nav {
   box-sizing: border-box;
   display: grid;
   grid-template:
-    'hamburger brand tools' var(--nav-height)
+    'brand brand hamburger' var(--nav-height)
     'sections sections sections' 1fr / auto 1fr auto;
   align-items: center;
-  gap: 0 2em;
+  /* gap: 0 2em; */
   margin: auto;
   max-width: 1264px;
   height: var(--nav-height);
@@ -22,18 +34,12 @@ header nav {
 }
 
 header nav[aria-expanded="true"] {
-  grid-template:
-    'hamburger brand' var(--nav-height)
+  /* grid-template:
+    'brand hamburger' var(--nav-height)
     'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
+    'tools tools' var(--nav-height) / auto 1fr; */
   overflow-y: auto;
   min-height: 100vh;
-}
-
-@media (min-width: 600px) {
-  header nav {
-    padding: 0 2rem;
-  }
 }
 
 @media (min-width: 900px) {
@@ -53,8 +59,14 @@ header nav p {
   line-height: 1;
 }
 
+header nav,
 header nav a:any-link {
-  color: currentcolor;
+  color: var(--text-red);
+  text-decoration: none;
+}
+
+header nav a:any-link:hover {
+  color: var(--text-red-hover);
 }
 
 /* hamburger */
@@ -94,41 +106,20 @@ header nav .nav-hamburger-icon::after {
   background: currentcolor;
 }
 
-header nav[aria-expanded="false"] .nav-hamburger-icon,
-header nav[aria-expanded="false"] .nav-hamburger-icon::before,
-header nav[aria-expanded="false"] .nav-hamburger-icon::after {
+header nav .nav-hamburger-icon,
+header nav .nav-hamburger-icon::before,
+header nav .nav-hamburger-icon::after {
   height: 2px;
   border-radius: 2px;
   background: currentcolor;
 }
 
-header nav[aria-expanded="false"] .nav-hamburger-icon::before {
+header nav .nav-hamburger-icon::before {
   top: -6px;
 }
 
-header nav[aria-expanded="false"] .nav-hamburger-icon::after {
+header nav .nav-hamburger-icon::after {
   top: 6px;
-}
-
-header nav[aria-expanded="true"] .nav-hamburger-icon {
-  height: 22px;
-}
-
-header nav[aria-expanded="true"] .nav-hamburger-icon::before,
-header nav[aria-expanded="true"] .nav-hamburger-icon::after {
-  top: 3px;
-  left: 1px;
-  transform: rotate(45deg);
-  transform-origin: 2px 1px;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
-}
-
-header nav[aria-expanded="true"] .nav-hamburger-icon::after {
-  top: unset;
-  bottom: 3px;
-  transform: rotate(-45deg);
 }
 
 @media (min-width: 900px) {
@@ -148,7 +139,7 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 137px;
   height: auto;
 }
 
@@ -156,15 +147,43 @@ header nav .nav-brand img {
 header nav .nav-sections {
   grid-area: sections;
   flex: 1 1 auto;
-  display: none;
+  /* display: none; */
   visibility: hidden;
   background-color: var(--overlay-color);
 }
 
 header nav[aria-expanded="true"] .nav-sections {
-  display: block;
+  /* display: block; */
   visibility: visible;
   align-self: start;
+}
+
+@media (max-width: 900px) {
+  header nav .nav-sections {
+    height: 0;
+    position: absolute;
+    top: 125px;
+    left: 0;
+    width: 100%;
+  }
+
+  header nav[aria-expanded="true"] .nav-sections {
+    height: 300px;
+    background-color: var(--background-color);
+  }
+  
+  header nav .nav-sections ul  {
+    background-color: #efefef;
+  }
+
+  header nav .nav-sections ul li {
+    border-top: solid 1px #dddddd;
+    padding: 10px 50px;
+  }
+
+  header nav .nav-sections ul li ul {
+    display: none;
+  }
 }
 
 header nav .nav-sections ul  {
@@ -225,9 +244,11 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 2em;
+    gap: 90px;
     margin: 0;
-    font-size: var(--body-font-size-xs);
+    font-size: var(--body-font-size-s);
+    text-transform: uppercase;
+    justify-content: end;
   }
 
   header nav .nav-sections > ul > li {
@@ -248,7 +269,7 @@ header nav .nav-sections ul > li > ul > li {
     width: 200px;
     margin-top: 12px;
     padding: 1em;
-    background-color: var(--highlight-background-color);
+    background-color: var(--background-color);
     white-space: initial;
   }
 
@@ -261,7 +282,7 @@ header nav .nav-sections ul > li > ul > li {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--highlight-background-color);
+    border-bottom: 8px solid var(--background-color);
   }
 
   header nav .nav-sections > ul > li > ul > li {
