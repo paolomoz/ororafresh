@@ -60,6 +60,8 @@
 
   /* nav height */
   --nav-height: 125px;
+  --nav-expanded-height: 331px;
+  --nav-expanded-expanded-height: 425px;
 
 }
 
@@ -90,15 +92,19 @@ body.appear {
 
 header {
   height: var(--nav-height);
-  position: absolute;
   width: 100%;
   background-color: var(--background-color);
   z-index: 2;
 }
 
+header[aria-expanded="true"] {
+  height: 425px;
+}
+
 @media (min-width: 900px) {
   header {
     opacity: 0.85;
+    position: absolute;
   }
 }
 
