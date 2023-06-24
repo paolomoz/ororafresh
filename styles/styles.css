@@ -30,12 +30,15 @@
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
-  --background-color: #fff;
-  --overlay-background-color: #eee;
-  --highlight-background-color: #ccc;
   --text-color: #000;
   --text-red: #eb3300;
   --text-red-hover: #ea6d4b;
+  --background-color: #fff;
+  --overlay-background-color: #eee;
+  --highlight-background-color: #ccc;
+  --nav-mobile-level1-background-color: #efefef;
+  --nav-mobile-level2-background-color: #e6e6e6;
+  --nav-mobile-border-color: #ddd;
 
   /* fonts */
   --body-font-family: 'Roboto', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
