@@ -44,16 +44,6 @@ header nav {
   font-family: var(--body-font-family);
 }
 
-header,
-header nav,
-header nav .nav-sections {
-  transition: height 0.5s;
-}
-
-header nav[aria-expanded="true"] {
-  height: var(--nav-expanded-expanded-height);
-}
-
 @media (min-width: 900px) {
   header nav {
     display: flex;
@@ -154,13 +144,31 @@ header nav .nav-sections {
   grid-area: sections;
   flex: 1 1 auto;
   background-color: var(--overlay-color);
-  height: 0;
-  overflow: hidden;
 }
 
 header nav[aria-expanded="true"] .nav-sections {
   align-self: start;
-  height: 300px;
+}
+
+@media (max-width: 899px) {
+  header,
+  header nav,
+  header nav .nav-sections {
+    transition: height 0.5s;
+  }
+
+  header nav[aria-expanded="true"] {
+    height: var(--nav-expanded-expanded-height);
+  }
+
+  header nav .nav-sections {
+    height: 0;
+    overflow: hidden;
+  }
+
+  header nav[aria-expanded="true"] .nav-sections {
+    height: 300px;
+  }
 }
 
 header nav .nav-sections ul  {
@@ -174,7 +182,7 @@ header nav .nav-sections ul > li > ul {
   margin-bottom: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 899px) {
   header nav .nav-sections {
     width: 100%;
     font-weight: 400;

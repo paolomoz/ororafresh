@@ -97,8 +97,10 @@ header {
   z-index: 2;
 }
 
-header[aria-expanded="true"] {
-  height: 425px;
+@media (max-width: 899px) {
+  header[aria-expanded="true"] {
+    height: 425px;
+  }
 }
 
 @media (min-width: 900px) {
