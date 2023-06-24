@@ -30,10 +30,15 @@
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
+  --text-color: #000;
+  --text-red: #eb3300;
+  --text-red-hover: #ea6d4b;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
-  --text-color: #000;
+  --nav-mobile-level1-background-color: #efefef;
+  --nav-mobile-level2-background-color: #e6e6e6;
+  --nav-mobile-border-color: #ddd;
 
   /* fonts */
   --body-font-family: 'Roboto', 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
@@ -54,13 +59,15 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 125px;
+  --nav-expanded-height: 331px;
+  --nav-expanded-expanded-height: 425px;
 
 }
 
 @media (min-width: 900px) {
   :root {
-    --heading-font-size-xxl: 90px;
+    --heading-font-size-xxl: 130px;
     --heading-font-size-xl: 48px;
     --heading-font-size-l: 36px;
     --heading-font-size-m: 30px;
@@ -85,6 +92,22 @@ body.appear {
 
 header {
   height: var(--nav-height);
+  width: 100%;
+  background-color: var(--background-color);
+  z-index: 2;
+}
+
+@media (max-width: 899px) {
+  header[aria-expanded="true"] {
+    height: 425px;
+  }
+}
+
+@media (min-width: 900px) {
+  header {
+    opacity: 0.85;
+    position: absolute;
+  }
 }
 
 h1, h2, h3,
@@ -246,9 +269,19 @@ main .section {
   }
 }
 
+
 @media (min-width: 900px) {
-  .section > div {
-    max-width: 1200px;
+  .section > div,
+  .hero > div > div {
+    max-width: 870px;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section > div,
+  .hero > div > div {
+    max-width: 1170px;
     margin: auto;
   }
 }

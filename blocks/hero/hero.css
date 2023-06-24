@@ -11,15 +11,17 @@ main .hero-container {
 main .hero {
   position: relative;
   padding: 32px;
-  min-height: 300px;
+  height: 500px;
+  overflow: hidden;
 }
 
 main .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 961px;
+  margin-top: 150px;
+  margin-bottom: 0;
   color: white;
   text-shadow: 2px 2px black;
+  line-height: 140px;
 }
 
 @media (max-width: 900px) {
@@ -32,9 +34,9 @@ main .hero picture {
   position: absolute;
   z-index: -1;
   top: 0;
+  right: 0;
   left: 0;
   bottom: 0;
-  right: 0;
   object-fit: cover;
   box-sizing: border-box;
 }
